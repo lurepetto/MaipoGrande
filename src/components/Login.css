@@ -40,19 +40,6 @@
   inset -3px -3px 5px rgba(241, 255, 255, 0.5);
 }
 
-button {
-  margin-top: 20px;
-  width: 130px;
-  background-color: #242424;
-  outline: none;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 10px;
-  padding: 10px;
-  transition: ease all 250ms;
-  border: unset;
-}
-
 button:hover {
   cursor: pointer;
   color: #fff;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import { Button } from './Button';
+/*import { Button } from './Button';*/
 
 function Navbar() {
     const [click, setClick] = useState(false);
@@ -38,22 +38,26 @@ function Navbar() {
             </div>
             <ul className={click ? "nav-menu active" : "nav-menu"}>
               <li className="nav-item">
-                <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                  Inicio
+                <Link to="/Contact" className="nav-links" onClick={closeMobileMenu}>
+                  Registrate
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/Login" className="nav-links-mobile" onClick={closeMobileMenu}>
+                <Link to="/Login" className="nav-links" onClick={closeMobileMenu}>
                   Login
                 </Link>
               </li>
             </ul>
-            {button && <Button buttonStyle='btn--outline'>Log In</
-            Button>}
+
           </div>
         </nav>
       </>
     );
 }
+
+/*{
+  button && <Button buttonStyle='btn--outline'>Log In</
+  Button>
+}*/
 
 export default Navbar

@@ -14,19 +14,18 @@ import './HeroSection.css'
              buttonStyle="btn--outline"
              buttonSize="btn--large"
            >
-             Ingresa a tu perfil
-           </Button>
-           <Button
-             className="btns"
-             buttonStyle="btn--primary"
-             buttonSize="btn--large"
-           >
-             Contactanos
+             Únete a nuestra comunidad
            </Button>
          </div>
        </div>
      );
  }
- 
+/* <Button
+  className="btns"
+  buttonStyle="btn--primary"
+  buttonSize="btn--large"
+>
+  Contactanos
+          </Button> */
  export default HeroSection
  

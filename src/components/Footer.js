@@ -35,7 +35,7 @@ function Footer() {
         <section className="social-media">
           <div className="social-media-wrap">
             <div className="footer-logo">
-              <Link className="social-logo">
+              <Link to='/' className="social-logo">
                 MaipoGrande ®<i className="fab fa-typo3" />
               </Link>
             </div>

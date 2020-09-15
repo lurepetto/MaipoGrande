@@ -1,6 +1,5 @@
 import React from "react";
 import "../Login.css";
-import Footer from "../Footer";
 import InputField from "../InputField";
 
 function Login() {
@@ -55,7 +54,6 @@ function Login() {
           />
           <button type='submit'>Login</button>
         </form>
-      <Footer />
     </div>
   );
 }
