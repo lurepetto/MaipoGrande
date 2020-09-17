@@ -50,7 +50,7 @@ const FormSignup = ({submitForm}) => {
                     className = 'form-label'>
                         Descripción (No olvides indicarnos tu rol)
                     </label>
-                    <input
+                    <textarea
                         id = 'description' 
                         type = 'description' 
                         name = 'description' 
