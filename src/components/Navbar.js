@@ -6,6 +6,7 @@ import './Navbar.css';
 function Navbar() {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
+    const isLogged = false;
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
@@ -43,9 +44,15 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/Login" className="nav-links" onClick={closeMobileMenu}>
-                  Login
+                {
+                  isLogged
+                    ? <Link to='/logout' className="nav-links" onClick={closeMobileMenu}>
+                    Logout
+                    </Link>
+                    : <Link to="/Login" className="nav-links" onClick={closeMobileMenu}>
+                    Login
                 </Link>
+                }
               </li>
             </ul>
 
