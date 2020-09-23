@@ -1,1 +1,3 @@
 $ npm install emailjs-com --save
+$ npm install react-router-dom
+$ npm install sha1
