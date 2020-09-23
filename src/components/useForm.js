@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import emailjs from 'emailjs-com';
+import {useState, useEffect} from 'react'
+import emailjs from 'emailjs-com'
 
 
 const useForm = (callback, validate) => {

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import sha1 from "sha1";
-import "../styles/Login.css";
+import React, { Component } from "react"
+import sha1 from "sha1"
+import "../styles/Login.css"
 
 class Log extends Component {
   state = {
@@ -36,8 +36,14 @@ class Log extends Component {
         .then(response =>  response.json() )
         .then(data => {
           console.log(data.ProfileName)
-          if(data.ProfileName === "Administrador"){
-            window.location.href='/contact'
+          if (data.ProfileName === "Consultor") {
+            window.location.href = "/consultor";
+          }
+          if (data.ProfileName === "Cliente") {
+            window.location.href = "/cliente";
+          }
+          if (data.ProfileName === "Transportista") {
+            window.location.href = "/transportista";
           }
         })
         .catch((error) => alert("Error detected: " + error));
@@ -79,4 +85,4 @@ class Log extends Component {
   }
 }
 
-export default Log;
+export default Log
