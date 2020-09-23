@@ -39,6 +39,7 @@ class Log extends Component {
           console.log(data.ProfileName)
           if(data.ProfileName === "Administrador"){
             window.location.href='/contact'
+            // asdasdasd
           }
         })
 
