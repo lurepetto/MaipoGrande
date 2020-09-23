@@ -33,7 +33,6 @@ class Log extends Component {
         body: JSON.stringify({Username: this.state.form.username,
                               Password: sha1(this.state.form.password)}),
       })
-        // .then(console.log(" "+this.state.form.username+ " "+sha1(this.state.form.password)))
         .then(response =>  response.json() )
         .then(data => {
           console.log(data.ProfileName)
