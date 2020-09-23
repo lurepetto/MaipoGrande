@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import sha1 from "sha1";
-
+import "../styles/Login.css";
 
 class Log extends Component {
   state = {
@@ -38,15 +38,8 @@ class Log extends Component {
           console.log(data.ProfileName)
           if(data.ProfileName === "Administrador"){
             window.location.href='/contact'
-            // asdasdasd
           }
         })
-
-
-        // .then(response => {
-        //   console.log(response)
-        // })
-        // .then((data) => console.log(data))
         .catch((error) => alert("Error detected: " + error));
     }
 
