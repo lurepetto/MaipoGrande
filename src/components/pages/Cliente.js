@@ -4,7 +4,6 @@ import "../../App.css";
 function Cliente() {
   return (
     <>
-      CLIENTE
     </>
   );
 }

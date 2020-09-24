@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import sha1 from "sha1"
 import "../styles/Login.css"
+import { setObject } from '../utils/storage'
 
 class Log extends Component {
   state = {
@@ -18,7 +19,7 @@ class Log extends Component {
             [e.target.name]: e.target.value
         }
     });
-    console.log(this.state.form);
+    console.log(this.state.form); /*Imprimimos los datos ingresados en el estado en la consola */
 }
 
   /* Método para hacer la petición http */
@@ -33,17 +34,20 @@ class Log extends Component {
         body: JSON.stringify({Username: this.state.form.username,
                               Password: sha1(this.state.form.password)}),
       })
-        .then(response =>  response.json() )
+        .then(response =>  response.json())
         .then(data => {
-          console.log(data.ProfileName)
-          if (data.ProfileName === "Consultor") {
-            window.location.href = "/consultor";
+          const rol = data.ProfileName; /*Creación de una variable con el rol del usuario */
+          console.log(rol)
+          setObject('profileName', rol )
+          /* Ciclo para rutear a página según rol */
+          if (rol === "Productor") {
+            return window.open("/productor", "_self");
           }
-          if (data.ProfileName === "Cliente") {
-            window.location.href = "/cliente";
+          else if (rol === "Cliente") {
+            return window.open("/cliente", "_self");
           }
-          if (data.ProfileName === "Transportista") {
-            window.location.href = "/transportista";
+          else if (rol === "Transportista") {
+            return window.open("/transportista", "_self");
           }
         })
         .catch((error) => alert("Error detected: " + error));
