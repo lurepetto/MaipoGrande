@@ -4,9 +4,9 @@ import Log from '../Log'
 
 function Login() {
   return (
-    <>
+    <div>
       <Log />
-    </>
+    </div>
   )
 }
 
