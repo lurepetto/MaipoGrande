@@ -60,7 +60,7 @@ class Log extends Component {
         setObject("profileName", rol); //Insertamos el rol en el objeto 'profilename'
         /* Ciclo para rutear a página según rol */
         if (rol === "Productor") {
-          return window.open("/productor", "_self"); //Método de redirección segura
+          return window.open("/productor", "_self"); //Redirección segura
         } else if (rol === "Cliente") {
           return window.open("/cliente", "_self");
         } else if (rol === "Transportista") {
