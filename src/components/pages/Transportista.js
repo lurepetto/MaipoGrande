@@ -4,7 +4,6 @@ import "../../App.css";
 function Transportista() {
   return (
     <>
-      TRANSPORTISTA
     </>
   );
 }
