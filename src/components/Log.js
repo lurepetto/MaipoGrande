@@ -38,10 +38,10 @@ class Log extends Component {
         .then(data => {
           const rol = data.ProfileName; /*Creación de una variable con el rol del usuario */
           console.log(rol)
-          setObject('profileName', rol )
+          setObject('profileName', rol ) //Insertamos el rol en el objeto 'profilename'
           /* Ciclo para rutear a página según rol */
           if (rol === "Productor") {
-            return window.open("/productor", "_self");
+            return window.open("/productor", "_self"); //Método de redirección segura
           }
           else if (rol === "Cliente") {
             return window.open("/cliente", "_self");
