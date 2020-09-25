@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import emailjs from 'emailjs-com';
+import {useState, useEffect} from 'react'
+import emailjs from 'emailjs-com'
 
 
 const useForm = (callback, validate) => {
@@ -33,13 +33,6 @@ const useForm = (callback, validate) => {
             }, (error) => {
                 console.log(error.text);
             });
-    
-                // emailjs.sendForm('gmail', 'register_template', e.target, 'user_d00ZuSyDY0fBVyvK5RLeA')
-                // .then((result) => {
-                //     console.log(result.text);
-                // }, (error) => {
-                //     console.log(error.text);
-                // });
         
     };
 

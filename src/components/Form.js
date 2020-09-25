@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import FormSignup from './FormSignup';
-import FormSuccess from './FormSuccess';
-import './Form.css';
+import React, { useState } from 'react'
+import FormSignup from './FormSignup'
+import FormSuccess from './FormSuccess'
+import '../styles/Form.css'
 
 
 const Form = () => {
