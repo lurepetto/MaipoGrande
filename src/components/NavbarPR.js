@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 
-function Navbar() {
+function NavbarPR() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const handleClick = () => setClick(!click);
@@ -35,19 +35,16 @@ function Navbar() {
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <Link
-                to="/Contact"
+                to="/productor"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Registrate
+                Ingresar Productos
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/Login"
-               className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Login
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                Logout
               </Link>
             </li>
           </ul>
@@ -62,4 +59,4 @@ function Navbar() {
   Button>
 }*/
 
-export default Navbar;
+export default NavbarPR;

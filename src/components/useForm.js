@@ -1,51 +1,54 @@
-import {useState, useEffect} from 'react'
-import emailjs from 'emailjs-com'
+import { useState, useEffect } from "react";
+import emailjs from "emailjs-com";
 
+const UseForm = (callback, validate) => {
+  const [values, setValues] = useState({
+    username: "",
+    lastname: "",
+    dni: "",
+    rol: "",
+    email: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-const useForm = (callback, validate) => {
-    const [values, setValues] = useState({
-        username: '',
-        email: '',
-        description: '',
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
     });
-    const [errors, setErrors] = useState({});
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    console.log(values);
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    setErrors(validate(values));
+    setIsSubmitting(true);
+  };
 
-    const handleChange = e => {
-        const { name, value } = e.target;
-        setValues({
-            ...values,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = e => {
-        e.preventDefault();
-
-        setErrors(validate(values));
-        setIsSubmitting(true);
-        emailjs.sendForm('gmail', 'register_template', e.target, 'user_d00ZuSyDY0fBVyvK5RLeA')
-            .then((result) => {
-                console.log(result.text);
-    
-            }, (error) => {
-                console.log(error.text);
-            });
-        
-    };
-
-    useEffect(() => {
-        if(Object.keys(errors).length === 0 &&
-        isSubmitting) {
-            callback();
+  const sendEmail = () => [
+    emailjs
+      .send("gmail", "register_template", values, "user_d00ZuSyDY0fBVyvK5RLeA")
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
         }
-    }, 
-    [errors]
-    );
+      ),
+  ];
 
-    return { handleChange, values, handleSubmit, errors };
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      sendEmail();
+      callback();
+    }
+  }, [errors]);
+
+  return { handleChange, values, handleSubmit, errors };
 };
 
-export default useForm;
+export default UseForm;
