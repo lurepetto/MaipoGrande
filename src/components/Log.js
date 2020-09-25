@@ -2,6 +2,9 @@ import React, { Component } from "react"
 import sha1 from "sha1"
 import "../styles/Login.css"
 import { setObject } from '../utils/storage'
+import ValidateLogForm from './ValidateLogForm'
+
+
 
 class Log extends Component {
   state = {
@@ -9,6 +12,8 @@ class Log extends Component {
       username: "",
       password: "",
     },
+    errors: {
+    }
   };
 
   /* Método para capturar inputs */
@@ -21,6 +26,22 @@ class Log extends Component {
     });
     console.log(this.state.form); /*Imprimimos los datos ingresados en el estado en la consola */
 }
+
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const { errors, ...sinErrors } = this.state.form
+    const result = ValidateLogForm.validate(sinErrors)
+    
+    this.setState({ errors: result })
+    if(Object.keys(result).length === 0) {
+      // Enviar el formulario!
+      this.iniciarSesion()
+    }
+    
+  }
+
+
 
   /* Método para hacer la petición http */
   iniciarSesion = () => {
@@ -49,42 +70,50 @@ class Log extends Component {
           else if (rol === "Transportista") {
             return window.open("/transportista", "_self");
           }
+          
         })
         .catch((error) => alert("Error detected: " + error));
     }
 
+
+
   render() {
+    const { errors } = this.state
     return (
-      <div className="containerPrincipal">
-        <div className="containerSecundario">
-          <div className="form-group">
-            <label>Usuario: </label>
-            <br />
-            <input
-              type="text"
-              className="form-control"
-              name="username"
-              onChange={this.handleChange}
-            />
-            <br />
-            <label>Contraseña: </label>
-            <br />
-            <input
-              type="password"
-              className="form-control"
-              name="password"
-              onChange={this.handleChange}
-            />
-            <br />
-            <button
-              className="btn btn-primary"
-              onClick={() => this.iniciarSesion()}
-            >
-              Iniciar Sesión
-            </button>
+      <form onSubmit={this.handleSubmit}>
+        <div className="containerPrincipal">
+          <div className="containerSecundario">
+            <div className="form-group">
+              <label>Usuario: </label>
+              <br />
+              <input
+                type="text"
+                className="form-control"
+                name="username"
+                onChange={this.handleChange}
+              />
+              {errors.username && <p>{ errors.username }</p>}
+              <br />
+              <label>Contraseña: </label>
+              <br />
+              <input
+                type="password"
+                className="form-control"
+                name="password"
+                onChange={this.handleChange}
+              />
+              {errors.password && <p>{ errors.password }</p>}
+              <br />
+              <button
+                className="btn btn-primary"
+                // onClick={() => this.iniciarSesion()}
+              >
+                Iniciar Sesión
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+     </form> 
     );
   }
 }
