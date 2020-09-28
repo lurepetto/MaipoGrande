@@ -35,7 +35,7 @@ class ingresarProducto extends Component {
     this.setState({ errors: result });
     if (Object.keys(result).length === 0) {
       // Enviar el formulario!
-      this.iniciarSesion();
+      this.ingresarProducto();
     }
   };
 
