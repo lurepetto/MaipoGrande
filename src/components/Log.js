@@ -56,8 +56,10 @@ class Log extends Component {
       .then((data) => {
         const rol =
           data.ProfileName; /*Creación de una variable con el rol del usuario */
-        console.log(rol);
-        setObject("profileName", rol); //Insertamos el rol en el objeto 'profilename'
+        const clientid = 
+          data.ClientID;
+        setObject("profileName", rol); // Insertamos el rol en el objeto 'profilename'
+        setObject("clientId", clientid) 
         /* Ciclo para rutear a página según rol */
         if (rol === "Productor") {
           return window.open("/productor", "_self"); //Redirección segura
@@ -99,7 +101,6 @@ class Log extends Component {
               <br />
               <button
                 className="btn btn-primary"
-                // onClick={() => this.iniciarSesion()}
               >
                 Iniciar Sesión
               </button>
