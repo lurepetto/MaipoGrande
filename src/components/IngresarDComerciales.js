@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Login.css";
-import ValidateIP from './ValidateIP';
+import ValidateDComerciales from './ValidateDComerciales';
 
 class ingresarDComerciales extends Component {
   state = {
@@ -33,7 +33,7 @@ class ingresarDComerciales extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { errors, ...sinErrors } = this.state.form;
-    const result = ValidateIP.validate(sinErrors);
+    const result = ValidateDComerciales.validate(sinErrors);
 
     this.setState({ errors: result });
     if (Object.keys(result).length === 0) {

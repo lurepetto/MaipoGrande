@@ -1,4 +1,4 @@
-const validate = (values) => {
+const validateIP = (values) => {
   const errors = {};
   if (!values.producto) {
     errors.producto = "Debe ingresar un producto";
@@ -34,4 +34,4 @@ const validate = (values) => {
   return errors;
 };
 
-export default { validate };
+export default { validateIP };
