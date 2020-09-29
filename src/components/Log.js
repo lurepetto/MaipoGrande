@@ -77,7 +77,7 @@ class Log extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="containerPrincipal">
-          <div className="containerSecundario">
+          <div className="containerSecundario"> 
             <div className="form-group">
               <label>Usuario: </label>
               <br />
