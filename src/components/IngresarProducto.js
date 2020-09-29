@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "../styles/Login.css";
-// import { setObject } from "../utils/storage";
 import ValidateIP from "./ValidateIP";
+import Log from "./Log";
+
 
 class ingresarProducto extends Component {
   state = {
@@ -76,7 +77,7 @@ class ingresarProducto extends Component {
               />
               {errors.cantidadProducto && <p>{errors.cantidadProducto}</p>}
               <br />
-              <label>Valor Producto: </label>
+              <label>Valor Producto: { Log.rol }</label>
               <br />
               <input
                 type="number"

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ValidateTP from "./ValidateTP";
+import { getObject } from "../utils/storage";
 
 class FormTP extends Component {
   state = {
@@ -10,6 +11,7 @@ class FormTP extends Component {
       vehicleCapacity: "",
     },
     errors: {},
+    clientId: getObject("clientId")
   };
 
   /* Método para capturar inputs */
@@ -31,10 +33,41 @@ class FormTP extends Component {
     const result = ValidateTP.validateTP(sinErrors);
 
     this.setState({ errors: result });
-    // if (Object.keys(result).length === 0) {
-    //   // Enviar el formulario
-    // }
+    // Enviar el formulario
+    this.enviarTransporte()
   };
+
+  enviarTransporte = () => {
+    fetch(`http://maipogrande-fv.duckdns.org:8080/api/Vehicle?clientID=${this.state.clientId}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain",
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      mode: "cors",
+      body: JSON.stringify({
+        VehicleID: "",
+        ClientID: this.state.clientId,
+        VehicleType: this.state.form.vehicleType,
+        VehiclePatent: this.state.form.vehiclePatent,
+        VehicleModel: this.state.form.vehicleModel,
+        VehicleCapacity: this.state.form.vehicleCapacity,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        // const rol =
+        //   data.ProfileName; /*Creación de una variable con el rol del usuario */
+        // const clientid = 
+        //   data.ClientID;
+        // setObject("profileName", rol); // Insertamos el rol en el objeto 'profilename'
+        // setObject("clientId", clientid) 
+        /* Ciclo para rutear a página según rol */
+      })
+      .catch((error) => alert("Error detected: " + error));
+  };
+
 
   render() {
     const { errors } = this.state;
@@ -56,9 +89,9 @@ class FormTP extends Component {
               <label>Patente del Vehículo: </label>
               <br />
               <input
-                type="patentVehicle"
+                type="vehiclePatent"
                 className="form-control"
-                name="patentVehicle"
+                name="vehiclePatent"
                 onChange={this.handleChange}
               />
               {errors.vehiclePatent && <p>{errors.vehiclePatent}</p>}

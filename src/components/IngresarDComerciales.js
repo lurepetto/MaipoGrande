@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import "../styles/Login.css";
 import ValidateDComerciales from './ValidateDComerciales';
+import { getObject } from '../utils/storage'
 
 class ingresarDComerciales extends Component {
   state = {
     form: {
       companyName: "",
       fantasyName: "",
+      comercialBusiness: "",
       email: "",
       comercialDNI: "",
       address: "",
@@ -15,6 +17,7 @@ class ingresarDComerciales extends Component {
       phoneNumber: "",
     },
     errors: {},
+    clientId: getObject("clientId")
   };
 
   /* Método para capturar inputs */
@@ -38,9 +41,40 @@ class ingresarDComerciales extends Component {
     this.setState({ errors: result });
     if (Object.keys(result).length === 0) {
       // Enviar el formulario!
-      this.ingresarDComerciales();
+      this.enviarDComerciales();
     }
   };
+
+  enviarDComerciales = () => {
+    fetch(`http://maipogrande-fv.duckdns.org:8080/api/ComercialData`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain",
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      mode: "cors",
+      body: JSON.stringify({
+        ComercialID: "",
+        ClientID: this.state.clientId,
+        CompanyName: this.state.form.companyName,
+        FantasyName: this.state.form.fantasyName,
+        ComercialBusiness: '',
+        Email: this.state.form.email,
+        ComercialDNI: this.state.form.comercialDNI,
+        Adress: this.state.form.address,
+        City: this.state.form.city,
+        Country: this.state.form.country,
+        PhoneNumber: this.state.form.phoneNumber,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((error) => alert("Error detected: " + error));
+  };
+
+
 
   render() {
     const { errors } = this.state;
@@ -72,7 +106,7 @@ class ingresarDComerciales extends Component {
               <label>Comercial Business: </label>
               <br />
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 name="comercialBusiness"
                 onChange={this.handleChange}
@@ -141,7 +175,6 @@ class ingresarDComerciales extends Component {
               <br />
               <button
                 className="btn btn-primary"
-                // onClick={() => this.iniciarSesion()}
               >
                 Ingresar productos
               </button>
