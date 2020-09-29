@@ -47,7 +47,7 @@ class FormTP extends Component {
       mode: "cors",
       body: JSON.stringify({
         VehicleID: "",
-        ClientID: getObject("clientId"),
+        ClientID: this.state.clientId,
         VehicleType: this.state.form.vehicleType,
         VehiclePatent: this.state.form.vehiclePatent,
         VehicleModel: this.state.form.vehicleModel,
