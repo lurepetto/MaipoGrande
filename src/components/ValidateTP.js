@@ -7,8 +7,8 @@ const validateTP = (values) => {
   }
   if (!values.vehiclePatent) {
     errors.vehiclePatent = "Este campo es obligatorio";
-  } else if (values.vehiclePatent.length < 7) {
-    errors.vehiclePatent = "Su patente debe tener más de 6 caracteres";
+  } else if (values.vehiclePatent.length < 6) {
+    errors.vehiclePatent = "Su patente debe tener más de 5 caracteres";
   }
   if (!values.vehicleModel) {
     errors.vehicleModel = "Este campo es obligatorio";
